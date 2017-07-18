@@ -1,0 +1,68 @@
+extends layout
+
+block content	
+	h1 Registro de Serviço
+	
+	#wrapper
+	p #{errorMsg}
+	h4 Todos campos são obrigatórios
+	form(action='/register',method='post')
+		div(class='container')
+			div(class='row')
+				div(class='col-sm-6')
+					div(class='form-group')
+						label(for='inputEmail') Email - max 100 chars
+						input(type='text', id='inputEmail', class='form-control', autocomplete='off', name='email', maxlength=10)
+				div(class='col-sm-6')
+					div(class='form-group')
+						label(for='inputName') Nome do Serviço - max 50 chars
+						input(type='text', id='inputName', class='form-control', autocomplete='off', name='nome', maxlength=50)
+				
+			div(class='row')
+				div(class='col-sm-6')
+					div(class='form-group')
+						label(for='inputPassword') Password - max 20 chars
+						input(type='password', id='inputPassword', class='form-control', autocomplete='off', name='password', maxlength=20)
+				div(class='col-sm-6')
+					div(class='form-group')
+						label(for='inputConfirmPassword') Confirmar Password
+						input(type='password', id='inputConfirmPassword', class='form-control', autocomplete='off', name='confirmPassword', maxlength=20)
+			
+			div(class='row')
+				div(class='col')
+					div(class='form-group')
+						label(for='inputDescription') Descrição do Serviço max 400 chars
+						input(type='text', id='inputDescription', class='form-control', autocomplete='off', name='description', maxlength=400)
+			
+			div(class='row')
+				div(class='col-sm-6')
+					div(class='form-group')
+						label(for='inputContactNumber') Número do Contacto
+						input(type='text', id='inputContactNumber', class='form-control', autocomplete='off', name='contact_number', maxlength=10)
+				div(class='col-sm-6')
+					div(class='form-group')
+						label(for='inputContactName') Nome do Contacto - max 50 chars
+						input(type='text', id='inputContactName', class='form-control', autocomplete='off', name='contact_name', maxlength=50)
+			
+			div(class='row')
+				div(class='col')
+					div(class='form-group')
+						label(for='inputLocation') Localização - max 150 chars
+						input(type='text', id='inputLocation', class='form-control', autocomplete='off', name='location', maxlength=150)
+			
+			div(class='center')
+				label(for='inputType') Tipo de Serviço
+				select(id='inputType', name='service_type')
+					option(value=1) Bar
+					option(value=2) Cinema
+					option(value=3) Teatro
+					option(value=4) Dança
+					option(value=5) Ginásio
+					option(value=6) Restaurante
+			
+			br
+			
+			div(class='row')
+				div(class='center')
+					a(href='/') Cancelar  
+					button(type='submit', class='btn btn-default') Registrar

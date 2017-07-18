@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	script(src='/javascripts/service_script.js')
+	script.
+		var local_service =!{JSON.stringify(service_info)};
+		var local_selection = 1;
+
+	p #{errorMsg}	
+		
+	#wrapper
+	
+	div(style='margin: 0 auto; width: 656px; text-align: center;')
+		h1 #{service_info.name}		
+	
+	div(style='margin: 0 auto; width: 656px; text-align: center;')
+		#serviceInformation
+		br
+		#serviceType
+		#serviceRanking
+		#serviceSubscribers
+		br
+		
+		#service-btn-options
+	
+	div(style='margin: 0 auto; width: 656px; text-align: center;')
+		#btnSelections
+	
+	hr
+	
+	div(style='margin: 0 auto; width: 656px; text-align: center;')
+		b #{resultMsg}
+	
+	div(class='row')
+		#placeholder

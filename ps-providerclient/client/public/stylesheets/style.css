@@ -1,0 +1,38 @@
+body {
+	background-color: #FFFFFF;
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1,h2 {
+	text-align:center;
+}
+
+h3 {
+	display:inline;
+}
+
+textarea {
+    resize: none;
+}
+
+#wrapper {
+	position:relative;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.jumbotron
+{   
+	height: 180px;
+}
