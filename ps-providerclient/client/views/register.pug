@@ -1,54 +1,57 @@
 extends layout
 
-block content	
+block content
+	script(src='/javascripts/register_script.js')
+
 	h1 Registro de Serviço
 	
 	#wrapper
 	p #{errorMsg}
 	h4 Todos campos são obrigatórios
-	form(action='/register',method='post')
+	form(id='registerForm', action='/register',method='post')
 		div(class='container')
 			div(class='row')
 				div(class='col-sm-6')
 					div(class='form-group')
-						label(for='inputEmail') Email - max 100 chars
-						input(type='text', id='inputEmail', class='form-control', autocomplete='off', name='email', maxlength=10)
+						label(for='inputEmail') Email - max 50 chars
+						input(type='text', id='inputEmail', class='form-control', name='email', maxlength=50)
 				div(class='col-sm-6')
 					div(class='form-group')
 						label(for='inputName') Nome do Serviço - max 50 chars
-						input(type='text', id='inputName', class='form-control', autocomplete='off', name='nome', maxlength=50)
+						input(type='text', id='inputName', class='form-control', name='name', maxlength=50)
 				
 			div(class='row')
 				div(class='col-sm-6')
 					div(class='form-group')
 						label(for='inputPassword') Password - max 20 chars
-						input(type='password', id='inputPassword', class='form-control', autocomplete='off', name='password', maxlength=20)
+						input(type='password', id='inputPassword', class='form-control', name='password', maxlength=20)
 				div(class='col-sm-6')
 					div(class='form-group')
 						label(for='inputConfirmPassword') Confirmar Password
-						input(type='password', id='inputConfirmPassword', class='form-control', autocomplete='off', name='confirmPassword', maxlength=20)
+						input(type='password', id='inputConfirmPassword', class='form-control', name='confirmPassword', maxlength=20, data-rule-equalTo="#inputPassword")
 			
 			div(class='row')
 				div(class='col')
 					div(class='form-group')
 						label(for='inputDescription') Descrição do Serviço max 400 chars
-						input(type='text', id='inputDescription', class='form-control', autocomplete='off', name='description', maxlength=400)
+						input(type='text', id='inputDescription', class='form-control', name='description', maxlength=400)
 			
 			div(class='row')
 				div(class='col-sm-6')
 					div(class='form-group')
-						label(for='inputContactNumber') Número do Contacto
-						input(type='text', id='inputContactNumber', class='form-control', autocomplete='off', name='contact_number', maxlength=10)
+						label(for='inputContactName') Nome do Contacto - max 50 chars
+						input(type='text', id='inputContactName', class='form-control', name='contact_name', maxlength=50)
 				div(class='col-sm-6')
 					div(class='form-group')
-						label(for='inputContactName') Nome do Contacto - max 50 chars
-						input(type='text', id='inputContactName', class='form-control', autocomplete='off', name='contact_name', maxlength=50)
+						label(for='inputContactNumber') Número do Contacto
+						input(type='text', id='inputContactNumber', class='form-control', name='contact_number', maxlength=10)
+				
 			
 			div(class='row')
 				div(class='col')
 					div(class='form-group')
 						label(for='inputLocation') Localização - max 150 chars
-						input(type='text', id='inputLocation', class='form-control', autocomplete='off', name='location', maxlength=150)
+						input(type='text', id='inputLocation', class='form-control', name='location', maxlength=150)
 			
 			div(class='center')
 				label(for='inputType') Tipo de Serviço

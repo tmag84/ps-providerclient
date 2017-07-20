@@ -29,7 +29,12 @@ router.get('/', function(req, res, next) {
 			});
 			
 			response.on('end', () => {
-				var json = JSON.parse(body);				
+				var json = JSON.parse(body);
+				
+				console.log(json);
+
+
+				
 				sess.service_id = json.service.id;				
 				res.render('service',{service_info:json.service});
 			});

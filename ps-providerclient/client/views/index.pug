@@ -1,10 +1,11 @@
 extends layout
 
 block content    
-	p #{errorMsg}
+	p #{responseMsg}
 	
 	#wrapper
-	if errorMsg
+	if hasAuth
+		p #{hasAuth}
 		div(class="container")
 			div(class="row")
 				div(class='col-md-1')

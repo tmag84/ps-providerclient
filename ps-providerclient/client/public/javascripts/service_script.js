@@ -37,8 +37,18 @@ function buildServiceHome() {
 	}
 	$('#serviceType').html('<b> Tipo de Serviço:</b>'+type);
 	
-	$('#serviceRanking').html('<b>Número de assinantes:</b>'+local_service.n_subscribers);
-	$('#serviceSubscribers').html('<b>Média de avaliação:</b>'+local_service.avg_rank);
+	var n_subcribers = 0;
+	if (local_service.n_subscribers) {
+		n_subcribers = local_service.n_subscribers;
+	}
+	
+	var avg_rank = 0;
+	if(local_service.avg_rank) {
+		avg_rank = local_service.avg_rank;
+	}
+	
+	$('#serviceRanking').html('<b>Número de assinantes:</b>'+n_subcribers);
+	$('#serviceSubscribers').html('<b>Média de avaliação:</b>'+avg_rank);
 	
 	$('#btnSelections').html('<button onclick="getServiceInfo()">Informação</button>');
 	$('#btnSelections').append('<button onclick="getEvents()">Eventos</button>');
@@ -239,16 +249,16 @@ function createEventDialog() {
 		+'<div class="row">'
 		+'<div class="col-sm-8">'
 		+'<h4>Data do Evento (dia-mês-ano,horas:minutos)</h4>'
-		+'<textarea rows="1" cols="2" id="day" name="day" maxlength=2 form="eventForm">0</textarea>'
-		+'<textarea rows="1" cols="2" id="month" name="month" maxlength=2 form="eventForm">0</textarea>'
-		+'<textarea rows="1" cols="4" id="year" name="year" maxlength=4 form="eventForm">0</textarea>'
-		+'<textarea rows="1" cols="2" id="start_hours" name="start_hours" maxlength=2 form="eventForm">0</textarea>'
-		+'<textarea rows="1" cols="2" id="start_minutes" name="start_minutes" maxlength=2 form="eventForm">0</textarea>'
+		+'<textarea rows="1" cols="2" id="day" name="day" maxlength=2 form="eventForm" placeholder="00"/>'
+		+'<textarea rows="1" cols="2" id="month" name="month" maxlength=2 form="eventForm"placeholder="00"/>'
+		+'<textarea rows="1" cols="4" id="year" name="year" maxlength=4 form="eventForm" placeholder="0000"/>'
+		+'<textarea rows="1" cols="2" id="start_hours" name="start_hours" maxlength=2 form="eventForm" placeholder="00"/>'
+		+'<textarea rows="1" cols="2" id="start_minutes" name="start_minutes" maxlength=2 form="eventForm" placeholder="00"/>'
 		+'</div>'
 		+'<div class="col-sm-4">'
 		+'<h4>Duração do Evento</h4>'
-		+'<textarea rows="1" cols="4" id="end_hours" name="end_hours" maxlength=2 form="eventForm">0</textarea>'
-		+'<textarea rows="1" cols="4" id="end_minutes" name="end_minutes" maxlength=2 form="eventForm">0</textarea>'
+		+'<textarea rows="1" cols="4" id="end_hours" name="end_hours" maxlength=2 form="eventForm" placeholder="00"/>'
+		+'<textarea rows="1" cols="4" id="end_minutes" name="end_minutes" maxlength=2 form="eventForm" placeholder="00"/>'
 		+'</div>'
 		+'</div>'
 		+'</div>'
@@ -436,7 +446,6 @@ function createNoticeDialog() {
 						url: "/service/create-notice",
 						data: $("#eventForm").serialize(),
 						success: function(result){
-							alert("Notícia criada com sucesso.");
 							local_service.service_notices.push(result.result);
 							getNotices();
 						},
